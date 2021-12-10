@@ -1,0 +1,4 @@
+variables,types,missing_count,missing_percent,unique_count,unique_rate
+mercadorias,character,0,0,9495,0.984141791044776
+precos,numeric,0,0,990,0.102611940298507
+timestamp,Date,0,0,1,0.000103648424543947
