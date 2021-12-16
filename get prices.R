@@ -72,18 +72,21 @@ tictoc::tic()
 get_prod <- future_map2_dfr(
   df1$urls,
   df1$setores,      #Insistetly() no lugar de safely() pra não gerar uma lista de error
-  insistently(produtos),
+  insistently(produtos,
+              rate_delay(pause = 1, max_times = Inf)
+              ),
   .options = furrr_options(seed = T) # 
 )
 tictoc::toc()
 
 
-# ////////////////////////////////////////TESTE MULTITHREADING
+# ////////////////////////////////////////SINGLE THREADING
 
 
 
 # ///// indeciso sobre usar future_map ou map normal, dependendo o computador parece que
-#        o future map trava, mas é muito mais rapido e eficiente
+#       o future map trava mas parece ser mais relacionado ao "insistently()",
+#       tentar aumentar o num de requests
 
 
 

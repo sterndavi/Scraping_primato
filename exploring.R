@@ -15,10 +15,14 @@ df1012 <- feather::read_feather(
   path = glue("{here()}/data/precos 2021-12-10.feather"))
 df1112 <- feather::read_feather(
   path = glue("{here()}/data/precos 2021-12-11.feather"))
+df1212 <- feather::read_feather(
+    path = glue("{here()}/data/precos 2021-12-12.feather"))
 df1312 <- feather::read_feather(
   path = glue("{here()}/data/precos 2021-12-13.feather"))
-
-
+df1412 <- feather::read_feather(
+    path = glue("{here()}/data/precos 2021-12-14.feather"))
+df1512 <- feather::read_feather(
+    path = glue("{here()}/data/precos 2021-12-1.feather"))
 
 df0712 <- df0712 %>% 
   left_join(df1312, by = "mercadorias") %>%
@@ -41,15 +45,18 @@ df <- df0712 %>%
   add_row(df0912) %>% 
   add_row(df1012) %>% 
   add_row(df1112) %>% 
-  add_row(df1312)
-        
-
+  add_row(df1212) %>%
+  add_row(df1312) %>%   
+  add_row(df1412) %>%
+  add_row(df1512)
+    
+    
 DataExplorer::create_report(df)
 
 df %>%
-  filter(setores == "acougue")%>%
-  ggplot()+
-  geom_jitter(aes(timestamp, precos))
-
+    group_by(timestamp, setores, mercadorias) %>% 
+    filter(setores == "acougue") %>% 
+    view()
+    
 
 
