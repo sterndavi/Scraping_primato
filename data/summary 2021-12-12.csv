@@ -1,0 +1,25 @@
+Var1,Var2,Freq
+"",  timestamp,Min.   :2021-12-12  
+"",  timestamp,1st Qu.:2021-12-12  
+"",  timestamp,Median :2021-12-12  
+"",  timestamp,Mean   :2021-12-12  
+"",  timestamp,3rd Qu.:2021-12-12  
+"",  timestamp,Max.   :2021-12-12  
+"",  setores,Length:9702       
+"",  setores,Class :character  
+"",  setores,Mode  :character  
+"",  setores,
+"",  setores,
+"",  setores,
+"",mercadorias,Length:9702       
+"",mercadorias,Class :character  
+"",mercadorias,Mode  :character  
+"",mercadorias,
+"",mercadorias,
+"",mercadorias,
+"",    precos,Min.   :  0.01  
+"",    precos,1st Qu.:  4.99  
+"",    precos,Median :  9.99  
+"",    precos,Mean   : 18.54  
+"",    precos,3rd Qu.: 19.98  
+"",    precos,Max.   :579.98  

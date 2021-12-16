@@ -1,10 +1,13 @@
+{
 library(rvest)
 library(tidyverse)
 library(here)
 library(lubridate)
 library(rio)
 library(glue)
-
+library(future)
+library(furrr)
+}
 
 ###############################################################
 
@@ -60,11 +63,38 @@ produtos <- function(urls,nome){
 
 # Chamar função para cada linha da dataframe
 
-get_prod <- map2_dfr(
+
+# ////////////////////////////////////////TESTE MULTITHREADING
+
+plan(multisession, workers = 4)
+
+tictoc::tic()
+get_prod <- future_map2_dfr(
   df1$urls,
   df1$setores,      #Insistetly() no lugar de safely() pra não gerar uma lista de error
-  insistently(produtos)
+  insistently(produtos),
+  .options = furrr_options(seed = T) # 
 )
+tictoc::toc()
+
+
+# ////////////////////////////////////////TESTE MULTITHREADING
+
+
+
+# ///// indeciso sobre usar future_map ou map normal, dependendo o computador parece que
+#        o future map trava, mas é muito mais rapido e eficiente
+
+
+
+#get_prod <- map2_dfr(
+#  df1$urls,
+#  df1$setores,      #Insistetly() no lugar de safely() pra não gerar uma lista de error
+#  insistently(produtos)
+#)
+
+
+future::
 
 get_prods <- get_prod #troubleshoot step, antiga pipe que nao é usada mais
 
